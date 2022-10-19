@@ -25,14 +25,16 @@ ggplot(data = par_response, aes(x = par, y = a)) +
   geom_line(col = 'red', size = 2, lty = 2, aes(y = aj)) +
   geom_line(col = 'blue', size = 2, lty = 2, aes(y = ac))
 
-temperature_response <- photosynthesis_model(temperature_c = seq(0, 50, 5), phi_psii_tresp = "yes")
+temperature_response <- photosynthesis_model(temperature_c = seq(0, 50, 5), phi_psii_tresp = "bernacchi",
+                                             par = 500)
 
 ggplot(data = temperature_response, aes(x = temperature_c, y = a)) +
   geom_line(col = 'black', size = 2) +
   geom_line(col = 'red', size = 2, lty = 2, aes(y = aj)) +
   geom_line(col = 'blue', size = 2, lty = 2, aes(y = ac))
 
-temperature_response2 <- photosynthesis_model(temperature_c = seq(0, 50, 5), phi_psii_tresp = "no")
+temperature_response2 <- photosynthesis_model(temperature_c = seq(0, 50, 5), phi_psii_tresp = "no",
+                                              par = 500)
 
 ggplot(data = temperature_response2, aes(x = temperature_c, y = a)) +
   geom_line(col = 'black', size = 2) +

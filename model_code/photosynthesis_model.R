@@ -32,8 +32,8 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   mc = (ci_pa - gammastar_pa) / (ci_pa + km_pa) # 
   ac = vcmax * mc # rubisco-limited photosynthesis
   
-  if(phi_psii_tresp == "yes"){
-    # Bernacchi et al. (2003) temperature response (set to 0.257 at 25C)
+  if(phi_psii_tresp == "bernacchi"){
+    # Bernacchi et al. (2003) temperature response
     phi_psii = 0.352 + (0.022 * temperature_c) - (0.00034 * temperature_c * temperature_c)
   }else{
     phi_psii
@@ -41,9 +41,10 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   
   jmax <- jmax25 * calc_jmax_tresp_mult(tleaf = temperature_c, tmean = temperature_c, tref = 25)
   m <- (ci_pa - gammastar_pa) / (ci_pa + 2 * gammastar_pa)
+  psii_light <- absorbance * photosystem_partitioning_coef * par # light getting to psii
   j_a <- theta
-  j_b <- -(phi_psii * absorbance * photosystem_partitioning_coef * par + jmax) 
-  j_c <- phi_psii * absorbance * photosystem_partitioning_coef * par * jmax
+  j_b <- -(phi_psii * psii_light + jmax) 
+  j_c <- phi_psii * psii_light * jmax
   j <- (-j_b + sqrt(j_b^2 - 4 * j_a * j_c)) / (2 * j_a)
   aj <- (j/e_partitioning_coef) * m # rubp regeneration-limited photosyntehsis
   
@@ -68,6 +69,7 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
                         "mc" = mc,
                         "ac" = ac,
                         "m" = m,
+                        "psii_light" = psii_light,
                         "j_a" = j_a,
                         "j_b" = j_b,
                         "j_c" = j_c,
