@@ -86,7 +86,7 @@ phi_psii_plot <- ggplot(data = phi_df, aes(y = phi_psii_noT, x = t_sequence)) +
         panel.grid.major = element_line(colour = "grey")) +
   geom_line(size = 2, color = 'black') +
   geom_line(size = 2, color = 'red', aes(y = phi_psii_yesT)) +
-  ylim(c(0.2, 0.8)) + 
+  ylim(c(0, 0.8)) + 
   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
 
@@ -101,7 +101,7 @@ phi_etr_plot <- ggplot(data = phi_df, aes(y = phi_etr_noT, x = t_sequence)) +
         panel.grid.major = element_line(colour = "grey")) +
   geom_line(size = 2, color = 'black') +
   geom_line(size = 2, color = 'red', aes(y = phi_etr_yesT)) +
-  ylim(c(0.1, 0.4)) + 
+  ylim(c(0, 0.4)) + 
   ylab(expression('Φ'['ETR'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
 
@@ -118,7 +118,7 @@ phi_co2_plot <- ggplot(data = phi_df, aes(y = phi_co2_noT_lowEP, x = t_sequence)
   geom_line(size = 2, color = 'red', aes(y = phi_co2_yesT_lowEP)) +
   geom_line(size = 2, color = 'black', lty = 2, aes(y = phi_co2_noT_highEP)) +
   geom_line(size = 2, color = 'red', lty = 2, aes(y = phi_co2_yesT_highEP)) +
-  ylim(c(0, 0.1)) + 
+  ylim(c(0, 0.2)) + 
   ylab(expression('Φ'['CO2'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
 
