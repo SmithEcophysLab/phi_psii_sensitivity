@@ -14,13 +14,16 @@ library(R.utils)
 sourceDirectory('functions', modifiedOnly = FALSE)
 
 photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 25, par = 400,
-                                 vcmax25 = 100, jmax25 = 100,
+                                 vcmax25 = 100, jmax25 = 200,
                                  phi_psii = 0.6895, # rate at 25C from Bernacchi
                                  e_partitioning_coef = 4, 
                                  absorbance = 0.85, 
                                  photosystem_partitioning_coef = 0.5,
                                  theta = 0.85,
-                                 phi_psii_tresp = 'no'){
+                                 phi_psii_tresp = 'no',
+                                 a_tresp = 0.02797109, # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
+                                 b_tresp = 0.0495,
+                                 c_tresp = 0.000887){
   
   patm_pa <- calc_patm(elevation_m) # atmospheric pressure (Pa)
   ca_pa <- ca_ppm * 1e-6 * patm_pa # atmospheric co2 (Pa)
@@ -30,23 +33,23 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   gammastar_pa <- calc_gammastar_pa(temperature_c, elevation_m) # co2 compensation point (Pa)
   km_pa <- calc_km_pa(temperature_c, elevation_m) # michaelis-menten coefficient for rubisco (Pa)
   mc = (ci_pa - gammastar_pa) / (ci_pa + km_pa) # 
-  ac = vcmax * mc # rubisco-limited photosynthesis
+  ac = (vcmax * mc) - (0.015 * vcmax) # rubisco-limited photosynthesis
   
-  if(phi_psii_tresp == "bernacchi"){
+  if(phi_psii_tresp == "yes"){
     # Bernacchi et al. (2003) temperature response
-    phi_psii = 0.352 + (0.022 * temperature_c) - (0.00034 * temperature_c * temperature_c)
+    phi_psii = a_tresp + (b_tresp * temperature_c) - (c_tresp * temperature_c * temperature_c)
   }else{
     phi_psii
   }
   
   jmax <- jmax25 * calc_jmax_tresp_mult(tleaf = temperature_c, tmean = temperature_c, tref = 25)
-  m <- (ci_pa - gammastar_pa) / (ci_pa + 2 * gammastar_pa)
+  m <- (ci_pa - gammastar_pa) / (ci_pa + (2 * gammastar_pa))
   psii_light <- absorbance * photosystem_partitioning_coef * par # light getting to psii
   j_a <- theta
   j_b <- -(phi_psii * psii_light + jmax) 
   j_c <- phi_psii * psii_light * jmax
   j <- (-j_b + sqrt(j_b^2 - 4 * j_a * j_c)) / (2 * j_a)
-  aj <- (j/e_partitioning_coef) * m # rubp regeneration-limited photosyntehsis
+  aj <- ((j/e_partitioning_coef) * m) - (0.015 * vcmax) # rubp regeneration-limited photosyntehsis
   
   a <- pmin(ac, aj)
   

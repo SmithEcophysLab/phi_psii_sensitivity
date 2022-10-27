@@ -45,6 +45,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 ### libraries
 library(ggplot2)
 
+
+
 ### define some parameters
 lowEP <- 4 # low value of electron partitioning (e needed to fix mol CO2)
 highEP <- 8 # high value of electron partitioning (e needed to fix mol CO2)
@@ -55,9 +57,14 @@ PP <- 0.5 # photon partitioning between PSII and PSI
 ### make a data frame
 t_sequence <- seq(0, 50, 1)
 
-a_tresp <- 0.03
 b_tresp <- 0.0495
 c_tresp <- 0.000887
+
+### get some y-axis scaling values
+topt_posch <- b_tresp / (2 * c_tresp)
+model_avg_phi_psii <- (0.66 + 0.75 + 0.85 + 0.66+ 0.75 + 0.61 + 0.75) / 7
+
+a_tresp <- model_avg_phi_psii - ((b_tresp * topt_posch) - (c_tresp * topt_posch^2)) # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
 
 phi_psii_noT <- a_tresp + 
   (b_tresp * 25) - 
