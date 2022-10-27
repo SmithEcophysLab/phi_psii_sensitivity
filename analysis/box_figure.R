@@ -55,16 +55,20 @@ PP <- 0.5 # photon partitioning between PSII and PSI
 ### make a data frame
 t_sequence <- seq(0, 50, 1)
 
-phi_psii_noT <- 0.352 + 
-  (0.022 * 25) - 
-  (0.00034 * 25 * 25) # change based on Brad's results
+a_tresp <- 0.03
+b_tresp <- 0.0495
+c_tresp <- 0.000887
+
+phi_psii_noT <- a_tresp + 
+  (b_tresp * 25) - 
+  (c_tresp * 25 * 25) # change based on Brad's results
 phi_etr_noT <- phi_psii_noT * abs * PP
 phi_co2_noT_lowEP <- phi_etr_noT / lowEP
 phi_co2_noT_highEP <- phi_etr_noT / highEP
 
-phi_psii_yesT <- 0.352 + 
-  (0.022 * t_sequence) - 
-  (0.00034 * t_sequence * t_sequence) # change based on Brad's results
+phi_psii_yesT <- a_tresp + 
+  (b_tresp * t_sequence) - 
+  (c_tresp * t_sequence * t_sequence) # change based on Brad's results
 phi_etr_yesT <- phi_psii_yesT * abs * PP
 phi_co2_yesT_lowEP <- phi_etr_yesT / lowEP
 phi_co2_yesT_highEP <- phi_etr_yesT / highEP
