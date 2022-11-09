@@ -48,7 +48,7 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   j_a <- theta
   j_b <- -(phi_psii * psii_light + jmax) 
   j_c <- phi_psii * psii_light * jmax
-  j <- (-j_b + sqrt(j_b^2 - 4 * j_a * j_c)) / (2 * j_a)
+  j <- (-j_b - sqrt(j_b^2 - 4 * j_a * j_c)) / (2 * j_a)
   aj <- ((j/e_partitioning_coef) * m) - (0.015 * vcmax) # rubp regeneration-limited photosyntehsis
   
   a <- pmin(ac, aj)

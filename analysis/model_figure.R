@@ -188,13 +188,13 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
   geom_line(size = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
   geom_line(size = 1.5, color = 'red', data = clm45_data, lty = 1, alpha = 0.5) +
   geom_line(size = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
-  ylim(c(0, 60)) + 
-  ylab(expression('A'['j'] * ' (µmol m' ^ '-2' * ' s' ^ '-1' * ')')) +
+  ylim(c(0, 20)) + 
+  ylab(expression('A'['j'] * ' (µmol CO'[2] * ' m' ^ '-2' * ' s' ^ '-1' * ')')) +
   xlab('Temperature (°C)')
 
 jpeg(filename = "plots/model_plot.jpeg", 
-     width = 7, height = 13, units = 'in', res = 600)
-multiplot(phi_psii_plot, aj_plot, cols = 1)
+     width = 13, height = 7, units = 'in', res = 600)
+multiplot(phi_psii_plot, aj_plot, cols = 2)
 dev.off()
 
 
