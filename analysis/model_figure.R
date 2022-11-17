@@ -135,26 +135,26 @@ lines(ac ~ temperature_c, data = ocn_data, col = 'red')
 ## make figures
 blue_palette <- brewer.pal(10, 'Blues')
 
-phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii)) +
-  theme(legend.position = 'none',
-        legend.text = element_text(size = rel(2)),
-        axis.title.y=element_text(size=rel(2.5), colour = 'black'),
-        axis.title.x=element_text(size=rel(2.5), colour = 'black'),
-        axis.text.x=element_text(size=rel(2.5), colour = 'black'),
-        axis.text.y=element_text(size=rel(2.5), colour = 'black'),
-        panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 1, color = blue_palette[4], data = bethy_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[5], data = jules_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[6], data = clm45_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[7], data = jsbach_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[8], data = ed2_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[9], data = gday_data, lty = 3) +
-  geom_line(size = 1, color = blue_palette[10], data = ocn_data, lty = 3) +
-  ylim(c(0, 1)) + 
-  ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
-  xlab('Temperature (°C)')
+# phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii)) +
+#   theme(legend.position = 'none',
+#         legend.text = element_text(linewidth = rel(2)),
+#         axis.title.y=element_text(linewidth=rel(2.5), colour = 'black'),
+#         axis.title.x=element_text(linewidth=rel(2.5), colour = 'black'),
+#         axis.text.x=element_text(linewidth=rel(2.5), colour = 'black'),
+#         axis.text.y=element_text(linewidth=rel(2.5), colour = 'black'),
+#         panel.background = element_rect(fill = 'white', colour = 'black'),
+#         panel.grid.major = element_line(colour = "grey")) +
+#   geom_line(linewidth = 2, color = 'black') +
+#   geom_line(linewidth = 1, color = blue_palette[4], data = bethy_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[5], data = jules_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[6], data = clm45_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[7], data = jsbach_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[8], data = ed2_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[9], data = gday_data, lty = 3) +
+#   geom_line(linewidth = 1, color = blue_palette[10], data = ocn_data, lty = 3) +
+#   ylim(c(0, 1)) + 
+#   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
+#   xlab('Temperature (°C)')
 
 phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii)) +
   theme(legend.position = 'none',
@@ -165,11 +165,11 @@ phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii))
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
         panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'red', data = clm45_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 2, color = 'black') +
+  geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'red', data = clm45_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
   ylim(c(0, 1)) + 
   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
@@ -183,11 +183,11 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
         panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'red', data = clm45_data, lty = 1, alpha = 0.5) +
-  geom_line(size = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 2, color = 'black') +
+  geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'red', data = clm45_data, lty = 1, alpha = 0.5) +
+  geom_line(linewidth = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
   ylim(c(0, 20)) + 
   ylab(expression('A'['j'] * ' (µmol CO'[2] * ' m' ^ '-2' * ' s' ^ '-1' * ')')) +
   xlab('Temperature (°C)')

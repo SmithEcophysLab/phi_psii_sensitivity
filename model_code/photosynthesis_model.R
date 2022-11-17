@@ -33,7 +33,7 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   gammastar_pa <- calc_gammastar_pa(temperature_c, elevation_m) # co2 compensation point (Pa)
   km_pa <- calc_km_pa(temperature_c, elevation_m) # michaelis-menten coefficient for rubisco (Pa)
   mc = (ci_pa - gammastar_pa) / (ci_pa + km_pa) # 
-  ac = (vcmax * mc) - (0.015 * vcmax) # rubisco-limited photosynthesis
+  ac = (vcmax * mc)  # rubisco-limited photosynthesis
   
   if(phi_psii_tresp == "yes"){
     # Bernacchi et al. (2003) temperature response
@@ -49,9 +49,9 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
   j_b <- -(phi_psii * psii_light + jmax) 
   j_c <- phi_psii * psii_light * jmax
   j <- (-j_b - sqrt(j_b^2 - 4 * j_a * j_c)) / (2 * j_a)
-  aj <- ((j/e_partitioning_coef) * m) - (0.015 * vcmax) # rubp regeneration-limited photosyntehsis
+  aj <- ((j/e_partitioning_coef) * m)  # rubp regeneration-limited photosyntehsis
   
-  a <- pmin(ac, aj)
+  a <- pmin(ac, aj) - (0.015 * vcmax)
   
   results <- data.frame("elevation_m" = elevation_m,
                         "ca_ppm" = ca_ppm,
