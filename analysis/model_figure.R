@@ -192,7 +192,7 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
   ylab(expression('A'['j'] * ' (µmol CO'[2] * ' m' ^ '-2' * ' s' ^ '-1' * ')')) +
   xlab('Temperature (°C)')
 
-jpeg(filename = "plots/model_plot.jpeg", 
+jpeg(filename = "plots/model_plot_v2.jpeg", 
      width = 13, height = 7, units = 'in', res = 600)
 multiplot(phi_psii_plot, aj_plot, cols = 2)
 dev.off()

@@ -14,6 +14,7 @@ library(R.utils)
 sourceDirectory('functions', modifiedOnly = FALSE)
 
 photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 25, par = 400,
+                                 tmean = 25,
                                  vcmax25 = 100, jmax25 = 200,
                                  phi_psii = 0.6895, # rate at 25C from Bernacchi
                                  e_partitioning_coef = 4, 
@@ -21,14 +22,14 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
                                  photosystem_partitioning_coef = 0.5,
                                  theta = 0.85,
                                  phi_psii_tresp = 'no',
-                                 a_tresp = 0.02797109, # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
-                                 b_tresp = 0.0495,
-                                 c_tresp = 0.000887){
+                                 a_tresp = 0.06361176, # a, given the assumption that model average phi psii (0.7175) is at the temperature optimum estimated from the data (27.59002 °C)
+                                 b_tresp = 0.0474,
+                                 c_tresp = 0.000859){
   
   patm_pa <- calc_patm(elevation_m) # atmospheric pressure (Pa)
   ca_pa <- ca_ppm * 1e-6 * patm_pa # atmospheric co2 (Pa)
   
-  vcmax <- vcmax25 * calc_vcmax_tresp_mult(tleaf = temperature_c, tmean = temperature_c, tref = 25)
+  vcmax <- vcmax25 * calc_vcmax_tresp_mult(tleaf = temperature_c, tmean = tmean, tref = 25)
   ci_pa <- 0.7 * ca_pa # intercellular co2 (Pa)
   gammastar_pa <- calc_gammastar_pa(temperature_c, elevation_m) # co2 compensation point (Pa)
   km_pa <- calc_km_pa(temperature_c, elevation_m) # michaelis-menten coefficient for rubisco (Pa)
@@ -42,7 +43,7 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
     phi_psii
   }
   
-  jmax <- jmax25 * calc_jmax_tresp_mult(tleaf = temperature_c, tmean = temperature_c, tref = 25)
+  jmax <- jmax25 * calc_jmax_tresp_mult(tleaf = temperature_c, tmean = tmean, tref = 25)
   m <- (ci_pa - gammastar_pa) / (ci_pa + (2 * gammastar_pa))
   psii_light <- absorbance * photosystem_partitioning_coef * par # light getting to psii
   j_a <- theta
