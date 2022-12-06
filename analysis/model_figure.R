@@ -53,7 +53,7 @@ sourceDirectory('../model_code/functions')
 
 ## run model
 posch_data <- photosynthesis_model(phi_psii_tresp = "yes", 
-                                   a_tresp = 0.1,
+                                   # a_tresp = 0.1,
                                    par = 400,
                                    temperature_c = seq(0, 50, 1))
 head(posch_data)

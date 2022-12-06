@@ -57,8 +57,8 @@ PP <- 0.5 # photon partitioning between PSII and PSI
 ### make a data frame
 t_sequence <- seq(0, 50, 1)
 
-b_tresp <- 0.0495
-c_tresp <- 0.000887
+b_tresp <- 0.0474
+c_tresp <- 0.000859
 
 ### get some y-axis scaling values
 topt_posch <- b_tresp / (2 * c_tresp)
@@ -95,8 +95,8 @@ phi_psii_plot <- ggplot(data = phi_df, aes(y = phi_psii_noT, x = t_sequence)) +
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
         panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 2, color = 'red', aes(y = phi_psii_yesT)) +
+  geom_line(linewidth = 2, color = 'black') +
+  geom_line(linewidth = 2, color = 'red', aes(y = phi_psii_yesT)) +
   ylim(c(0, 0.8)) + 
   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
@@ -110,8 +110,8 @@ phi_etr_plot <- ggplot(data = phi_df, aes(y = phi_etr_noT, x = t_sequence)) +
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
         panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 2, color = 'red', aes(y = phi_etr_yesT)) +
+  geom_line(linewidth = 2, color = 'black') +
+  geom_line(linewidth = 2, color = 'red', aes(y = phi_etr_yesT)) +
   ylim(c(0, 0.4)) + 
   ylab(expression('Φ'['ETR'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')
@@ -125,10 +125,10 @@ phi_co2_plot <- ggplot(data = phi_df, aes(y = phi_co2_noT_lowEP, x = t_sequence)
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
         panel.grid.major = element_line(colour = "grey")) +
-  geom_line(size = 2, color = 'black') +
-  geom_line(size = 2, color = 'red', aes(y = phi_co2_yesT_lowEP)) +
-  geom_line(size = 2, color = 'black', lty = 2, aes(y = phi_co2_noT_highEP)) +
-  geom_line(size = 2, color = 'red', lty = 2, aes(y = phi_co2_yesT_highEP)) +
+  geom_line(linewidth = 2, color = 'black') +
+  geom_line(linewidth = 2, color = 'red', aes(y = phi_co2_yesT_lowEP)) +
+  geom_line(linewidth = 2, color = 'black', lty = 2, aes(y = phi_co2_noT_highEP)) +
+  geom_line(linewidth = 2, color = 'red', lty = 2, aes(y = phi_co2_yesT_highEP)) +
   ylim(c(0, 0.2)) + 
   ylab(expression('Φ'['CO2'] * ' (mol/mol)')) +
   xlab('Temperature (°C)')

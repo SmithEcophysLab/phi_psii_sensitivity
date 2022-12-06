@@ -22,9 +22,13 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
                                  photosystem_partitioning_coef = 0.5,
                                  theta = 0.85,
                                  phi_psii_tresp = 'no',
-                                 a_tresp = 0.06361176, # a, given the assumption that model average phi psii (0.7175) is at the temperature optimum estimated from the data (27.59002 °C)
                                  b_tresp = 0.0474,
                                  c_tresp = 0.000859){
+  
+  topt_posch <- b_tresp / (2 * c_tresp)
+  model_avg_phi_psii <- (0.66 + 0.75 + 0.85 + 0.66+ 0.75 + 0.61 + 0.75) / 7
+  
+  a_tresp <- model_avg_phi_psii - ((b_tresp * topt_posch) - (c_tresp * topt_posch^2)) # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
   
   patm_pa <- calc_patm(elevation_m) # atmospheric pressure (Pa)
   ca_pa <- ca_ppm * 1e-6 * patm_pa # atmospheric co2 (Pa)
