@@ -26,7 +26,7 @@ photosynthesis_model <- function(elevation_m = 0, ca_ppm = 420, temperature_c = 
                                  c_tresp = 0.000859){
   
   topt_posch <- b_tresp / (2 * c_tresp)
-  model_avg_phi_psii <- (0.66 + 0.75 + 0.85 + 0.66+ 0.75 + 0.61 + 0.75) / 7
+  model_avg_phi_psii <- 0.75
   
   a_tresp <- model_avg_phi_psii - ((b_tresp * topt_posch) - (c_tresp * topt_posch^2)) # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
   

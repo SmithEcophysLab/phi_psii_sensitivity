@@ -164,7 +164,7 @@ phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii))
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.grid.major = element_line(colour = "white")) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
   geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
@@ -182,7 +182,7 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.grid.major = element_line(colour = "white")) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
   geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +

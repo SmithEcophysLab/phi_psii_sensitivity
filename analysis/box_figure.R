@@ -62,7 +62,7 @@ c_tresp <- 0.000859
 
 ### get some y-axis scaling values
 topt_posch <- b_tresp / (2 * c_tresp)
-model_avg_phi_psii <- (0.66 + 0.75 + 0.85 + 0.66+ 0.75 + 0.61 + 0.75) / 7
+model_avg_phi_psii <- 0.75
 
 a_tresp <- model_avg_phi_psii - ((b_tresp * topt_posch) - (c_tresp * topt_posch^2)) # a, given the assumption that model average phi psii is at the temperature optimum estimated from the data
 
@@ -94,7 +94,7 @@ phi_psii_plot <- ggplot(data = phi_df, aes(y = phi_psii_noT, x = t_sequence)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.grid.major = element_line(colour = "white")) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_psii_yesT)) +
   ylim(c(0, 0.8)) + 
@@ -109,7 +109,7 @@ phi_etr_plot <- ggplot(data = phi_df, aes(y = phi_etr_noT, x = t_sequence)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.grid.major = element_line(colour = "white")) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_etr_yesT)) +
   ylim(c(0, 0.4)) + 
@@ -124,7 +124,7 @@ phi_co2_plot <- ggplot(data = phi_df, aes(y = phi_co2_noT_lowEP, x = t_sequence)
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "grey")) +
+        panel.grid.major = element_line(colour = "white")) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_co2_yesT_lowEP)) +
   geom_line(linewidth = 2, color = 'black', lty = 2, aes(y = phi_co2_noT_highEP)) +
