@@ -94,12 +94,14 @@ phi_psii_plot <- ggplot(data = phi_df, aes(y = phi_psii_noT, x = t_sequence)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "white")) +
+        panel.grid.major = element_line(colour = "white"),
+        plot.tag = element_text(size = 30)) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_psii_yesT)) +
   ylim(c(0, 0.8)) + 
   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
-  xlab('Temperature (°C)')
+  xlab('Temperature (°C)') +
+  labs(tag = "(a)")
 
 phi_etr_plot <- ggplot(data = phi_df, aes(y = phi_etr_noT, x = t_sequence)) +
   theme(legend.position = 'none',
@@ -109,12 +111,14 @@ phi_etr_plot <- ggplot(data = phi_df, aes(y = phi_etr_noT, x = t_sequence)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "white")) +
+        panel.grid.major = element_line(colour = "white"),
+        plot.tag = element_text(size = 30)) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_etr_yesT)) +
   ylim(c(0, 0.4)) + 
   ylab(expression('Φ'['ETR'] * ' (mol/mol)')) +
-  xlab('Temperature (°C)')
+  xlab('Temperature (°C)') +
+  labs(tag = "(b)")
 
 phi_co2_plot <- ggplot(data = phi_df, aes(y = phi_co2_noT_lowEP, x = t_sequence)) +
   theme(legend.position = 'none',
@@ -124,14 +128,16 @@ phi_co2_plot <- ggplot(data = phi_df, aes(y = phi_co2_noT_lowEP, x = t_sequence)
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "white")) +
+        panel.grid.major = element_line(colour = "white"),
+        plot.tag = element_text(size = 30)) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 2, color = 'red', aes(y = phi_co2_yesT_lowEP)) +
   geom_line(linewidth = 2, color = 'black', lty = 2, aes(y = phi_co2_noT_highEP)) +
   geom_line(linewidth = 2, color = 'red', lty = 2, aes(y = phi_co2_yesT_highEP)) +
   ylim(c(0, 0.2)) + 
   ylab(expression('Φ'['CO2'] * ' (mol/mol)')) +
-  xlab('Temperature (°C)')
+  xlab('Temperature (°C)') +
+  labs(tag = "(c)")
 
 jpeg(filename = "plots/phi_plot.jpeg", 
      width = 21, height = 7, units = 'in', res = 600)

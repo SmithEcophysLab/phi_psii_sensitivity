@@ -164,7 +164,8 @@ phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii))
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "white")) +
+        panel.grid.major = element_line(colour = "white"),
+        plot.tag = element_text(size = 30)) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
   geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
@@ -172,7 +173,8 @@ phi_psii_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = phi_psii))
   geom_line(linewidth = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
   ylim(c(0, 1)) + 
   ylab(expression('Φ'['PSII'] * ' (mol/mol)')) +
-  xlab('Temperature (°C)')
+  xlab('Temperature (°C)') +
+  labs(tag = "(a)")
 
 aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
   theme(legend.position = 'none',
@@ -182,7 +184,8 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
         axis.text.x=element_text(size=rel(2.5), colour = 'black'),
         axis.text.y=element_text(size=rel(2.5), colour = 'black'),
         panel.background = element_rect(fill = 'white', colour = 'black'),
-        panel.grid.major = element_line(colour = "white")) +
+        panel.grid.major = element_line(colour = "white"),
+        plot.tag = element_text(size = 30)) +
   geom_line(linewidth = 2, color = 'black') +
   geom_line(linewidth = 1.5, color = 'blue', data = bethy_data, lty = 1, alpha = 0.5) +
   geom_line(linewidth = 1.5, color = 'purple', data = jules_data, lty = 1, alpha = 0.5) +
@@ -190,7 +193,8 @@ aj_plot <- ggplot(data = posch_data, aes(x = temperature_c, y = aj)) +
   geom_line(linewidth = 1.5, color = 'brown', data = gday_data, lty = 1, alpha = 0.5) +
   ylim(c(0, 20)) + 
   ylab(expression('A'['j'] * ' (µmol CO'[2] * ' m' ^ '-2' * ' s' ^ '-1' * ')')) +
-  xlab('Temperature (°C)')
+  xlab('Temperature (°C)')+
+  labs(tag = "(b)")
 
 jpeg(filename = "plots/model_plot_v2.jpeg", 
      width = 13, height = 7, units = 'in', res = 600)
