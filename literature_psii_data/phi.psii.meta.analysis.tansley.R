@@ -40,7 +40,7 @@ formula <- y ~ poly(x, 2, raw = TRUE)
 ##### supplementary figures #####
 
 #plots from Janka
-ggplot(janka.psii.data, aes(temp, phi.psii)) +
+ggplot(janka.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", se = F) +
@@ -53,7 +53,7 @@ ggplot(janka.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from dwyer
-ggplot(dwyer.psii.data, aes(temp, phi.psii)) +
+ggplot(dwyer.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -66,7 +66,7 @@ ggplot(dwyer.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from wittman and pfanz
-ggplot(wp.psii.data, aes(temp, phi.psii)) +
+ggplot(wp.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -79,7 +79,7 @@ ggplot(wp.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from dongsansuk
-ggplot(dongsansuk.psii.data, aes(temp, phi.psii)) +
+ggplot(dongsansuk.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -92,7 +92,7 @@ ggplot(dongsansuk.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from bernacchi
-ggplot(bernacchi.psii.data, aes(temp, phi.psii)) +
+ggplot(bernacchi.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -105,7 +105,7 @@ ggplot(bernacchi.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from june
-ggplot(june.psii.data, aes(temp, phi.psii)) +
+ggplot(june.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -118,7 +118,7 @@ ggplot(june.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from salvucci
-ggplot(salvucci.psii.data, aes(temp, phi.psii)) +
+ggplot(salvucci.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -131,7 +131,7 @@ ggplot(salvucci.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from wittman
-ggplot(wittman.psii.data, aes(temp, phi.psii)) +
+ggplot(wittman.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -144,7 +144,7 @@ ggplot(wittman.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from xu
-ggplot(xu.psii.data, aes(temp, phi.psii)) +
+ggplot(xu.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -157,7 +157,7 @@ ggplot(xu.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from greer
-ggplot(greer.psii.data, aes(temp, phi.psii)) +
+ggplot(greer.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -170,7 +170,7 @@ ggplot(greer.psii.data, aes(temp, phi.psii)) +
                      minor_breaks=NULL)
 
 #plots from dongsansuk & neüner
-ggplot(dongsansuk.neuner.psii.data, aes(temp, phi.psii)) +
+ggplot(dongsansuk.neuner.psii.data, aes(meas.temp, phi.psii)) +
   facet_wrap(~id) +
   geom_point() +
   geom_smooth(method = "lm", formula = formula, se = FALSE) +
@@ -186,7 +186,7 @@ ggplot(dongsansuk.neuner.psii.data, aes(temp, phi.psii)) +
 ###### figure 2 #######
 
 #phi PSII relative to Topt scatter plot
-ggplot(psii.data.nostems.noalgae, aes(temp, topt.normalised, colour = growth.temp, shape = id, group = id)) +
+ggplot(psii.data.nostems.noalgae, aes(meas.temp, topt.normalised, colour = growth.temp, shape = id, group = id)) +
   geom_point(alpha = 0.8, size = 3) +
   geom_smooth(method = "lm", aes(group = 1), 
               formula = formula, se = TRUE, 
@@ -206,4 +206,3 @@ ggplot(psii.data.nostems.noalgae, aes(temp, topt.normalised, colour = growth.tem
   border() +
   scale_x_continuous(breaks=seq(-10,60,5),
                      minor_breaks=NULL)
-
