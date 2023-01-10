@@ -1,11 +1,10 @@
 # load libraries
-library(ggplot2)
+library(tidyverse)
 library(rockchalk)
 library(lme4)
 library(lmerTest)
 library(emmeans)
 library(broom)
-library(wesanderson)
 library(Hmisc)
 library(corrplot)
 library(ggpubr)
@@ -13,16 +12,11 @@ library(ggsci)
 library(Rmisc)
 library(agricolae)
 library(arsenal)
-library(plantecophys)
-library(LeafArea)
-library(dplyr)
-library(tidyr)
-library(readr)
 library(ggpmisc)
 
-setwd("~/OneDrive - Texas Tech University/Manuscripts/In progress/phi_psii_tansley")
-psii.data.nostems.noalgae <- read.csv("extracted psii t response data_NoAlgaeNoStems.csv")
-extracted.psii.data <- read.csv("extracted psii t response data_v2.csv")
+#all paths assume 'phi_psii_sensitivity' repository is root directory
+psii.data.nostems.noalgae <- read.csv("literature_psii_data/extracted psii t response data_NoAlgaeNoStems.csv")
+extracted.psii.data <- read.csv("literature_psii_data/extracted psii t response data_v2.csv")
 
 
 #subset data by inidivudal papers
