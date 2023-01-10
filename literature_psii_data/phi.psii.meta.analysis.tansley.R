@@ -14,9 +14,9 @@ library(agricolae)
 library(arsenal)
 library(ggpmisc)
 
-#all paths assume 'phi_psii_sensitivity' repository is root directory
-psii.data.nostems.noalgae <- read.csv("literature_psii_data/extracted psii t response data_NoAlgaeNoStems.csv")
-extracted.psii.data <- read.csv("literature_psii_data/extracted psii t response data_v2.csv")
+#all paths assume 'phi_psii_sensitivity/literature_psii_data' repository is root directory
+psii.data.nostems.noalgae <- read.csv("extracted psii t response data_NoAlgaeNoStems.csv")
+extracted.psii.data <- read.csv("extracted psii t response data_v2.csv")
 
 
 #subset data by inidivudal papers
@@ -206,3 +206,4 @@ ggplot(psii.data.nostems.noalgae, aes(temp, topt.normalised, colour = growth.tem
   border() +
   scale_x_continuous(breaks=seq(-10,60,5),
                      minor_breaks=NULL)
+
