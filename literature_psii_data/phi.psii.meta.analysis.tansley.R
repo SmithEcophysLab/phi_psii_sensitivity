@@ -15,8 +15,8 @@ library(arsenal)
 library(ggpmisc)
 
 #all paths assume 'phi_psii_sensitivity/literature_psii_data' repository is root directory
-psii.data.nostems.noalgae <- read.csv("extracted_psii_t_response_data_NoAlgaeNoStems.csv")
 extracted.psii.data <- read.csv("extracted_psii_t_response_data_v2.csv")
+psii.data.nostems.noalgae <- subset(extracted.psii.data, omitted_fig2 == 'no')
 
 
 #subset data by inidivudal papers
