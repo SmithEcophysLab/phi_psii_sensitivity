@@ -22,4 +22,6 @@ Model and code for phi psii temperature sensitivity analysis for 'The temperatur
 - [model_code](model_code)
 	- [functions](model_code/functions): contains functions required to run photosynthesis model
 	- [photosynthesis_model.R](model_code/photosynthesis_model.R): photosynthesis model based on Farquahr, von Caemmerrer and Berry (1980)
-	- [test_photosynthesis_model.R](model_code/test_photosynthesis_model.R): test of photosynthesis model 
+	- [test_photosynthesis_model.R](model_code/test_photosynthesis_model.R): test of photosynthesis model
+
+[![DOI](https://zenodo.org/badge/551106840.svg)](https://zenodo.org/badge/latestdoi/551106840)
